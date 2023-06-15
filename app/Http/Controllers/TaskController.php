@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tugas;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -11,7 +12,7 @@ class TaskController extends Controller
     {
         $taskData = Tugas::query()->get();
         $data = [
-            'tasksData' => $taskData
+            'tasksData' => $taskData,
         ];
         return view('pages/home', $data);
     }
@@ -40,6 +41,9 @@ class TaskController extends Controller
     public function updateData(int $id)
     {
         $task = Tugas::find($id);
+        if($task->id != $id) {
+            return redirect('/tasks');
+        }
         $task->judul = 'Mengerjakan Laporan Keuangan';
         $task->deskripsi = 'Mengerjakan laporan keuangan bulanan';
         $task->status = 'Selesai';
@@ -50,6 +54,9 @@ class TaskController extends Controller
     public function delete(int $id)
     {
         $task = Tugas::find($id);
+        if($task->id != $id) {
+            return redirect('/tasks');
+        }
         $task->delete();
         return redirect('/tasks');
     }
@@ -79,6 +86,9 @@ class TaskController extends Controller
     public function updateStatus(Request $request ,int $id)
     {   
         $task = Tugas::find($id);
+        if($task->id != $id) {
+            return redirect('/tasks');
+        }
         if($request->status == 'completed') {
             $task->status = 'Selesai';
         } else if($request->status == 'incomplete') {
