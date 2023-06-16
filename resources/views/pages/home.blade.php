@@ -37,10 +37,9 @@
                 </tr>
             </thead>
             <tbody>
-            <?= $number = 1; ?>
                 @foreach($tasksData as $taskData)
                 <tr>
-                    <th scope="row"><?= $number++; ?></th>
+                    <th scope="row">{{$number++}}</th>
                     <td>{{ $taskData->judul}}</td>
                     <td>{{ $taskData->deskripsi}}</td>
                     <td>{{ $taskData->status}}</td>

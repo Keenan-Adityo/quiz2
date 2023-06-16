@@ -13,6 +13,7 @@ class TaskController extends Controller
         $taskData = Tugas::query()->get();
         $data = [
             'tasksData' => $taskData,
+            'number' => 1
         ];
         return view('pages/home', $data);
     }
@@ -67,7 +68,8 @@ class TaskController extends Controller
             ->where('status', 'Selesai')
             ->get();
         $data = [
-            'tasksData' => $taskData
+            'tasksData' => $taskData,
+            'number' => 1
         ];
         return view('pages/home', $data);
     }
@@ -78,7 +80,8 @@ class TaskController extends Controller
             ->where('status', 'Belum selesai')
             ->get();
         $data = [
-            'tasksData' => $taskData
+            'tasksData' => $taskData,
+            'number' => 1
         ];
         return view('pages/home', $data);
     }
