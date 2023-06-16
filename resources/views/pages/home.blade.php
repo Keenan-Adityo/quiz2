@@ -29,7 +29,7 @@
         <table class="table table-striped table-bordered mx-auto mt-3" style="width: 80%;">
             <thead>
                 <tr>
-                    <th scope="col">id</th>
+                    <th scope="col">no</th>
                     <th scope="col">Judul</th>
                     <th scope="col">Deskripsi</th>
                     <th scope="col">Status</th>
@@ -37,9 +37,10 @@
                 </tr>
             </thead>
             <tbody>
+            <?= $number = 1; ?>
                 @foreach($tasksData as $taskData)
                 <tr>
-                    <th scope="row">{{$taskData->id}}</th>
+                    <th scope="row"><?= $number++; ?></th>
                     <td>{{ $taskData->judul}}</td>
                     <td>{{ $taskData->deskripsi}}</td>
                     <td>{{ $taskData->status}}</td>
